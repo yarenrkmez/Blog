@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+   #ara{
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+        background-image: url('../../Content/Classic/img/icons8-search-32.png');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+        input[type=text]:focus {
+            width: 100%;
+        }
+</style>
+
+<form method="post" action="/Homee/Ara" >
+    <input id="ara" type="text" name="content" placeholder="Search..">
+</form>

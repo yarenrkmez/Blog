@@ -1,0 +1,157 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Blog-@ViewBag.Title</title>
+    <!--
+    Classic Template
+    http:/www.templatemo.com/tm-488-classic
+    -->
+    <!-- load stylesheets -->
+    <link rel="stylesheet" href="/Content/Classic/https:/fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="/Content/Classic/css/bootstrap.min.css">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" href="/Content/Classic/css/templatemo-style.css">                                   <!-- Templatemo style -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="//www.siteadi.com/a/themify-icons.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:/ -->
+    <!--[if lt IE 9]>
+      <script src="/Content/Classic/https:/oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/Content/Classic/https:/oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    @RenderSection("head", false)
+</head>
+
+<body>
+    @model IEnumerable<Blogg.Models.Yazar>
+    <div class="tm-header">
+        <div class="container-fluid">
+            <div class="tm-header-inner">
+                <a href="/Content/Classic/#" class="navbar-brand tm-site-name" style="color:#A62E5A">Blogg</a>
+              
+
+                <!-- navbar -->
+                <nav class="navbar tm-main-nav">
+
+                    <button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#tmNavbar">
+                        &#9776;
+                    </button>
+
+                    <div class="collapse navbar-toggleable-sm" id="tmNavbar">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item active">
+                                <a href="/Homee/Index" class="nav-link" style="color:#2E2473">Ana Sayfa</a>
+                            </li>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item px-lg-4">
+                                    <ul class="navbar-nav ml-auto nav-flex-icons">
+                                        <li class="nav-item avatar dropdown">
+                                            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0" alt="avatar image">
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+                                                <a class="dropdown-item waves-effect waves-light" href="#"> Hoşgeldiniz @System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(User.Identity.Name);</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="/Admin/Index">İşlemlerim</a>
+                                                <a class="dropdown-item waves-effect waves-light" href="/Member/Logout">Çıkış Yap</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </li>
+                            }
+
+
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/Yazar/YazarEkle" id="kytol" style="color:#2E2473">Kayıt Ol</a>
+
+                            </li>
+
+
+                            <li class="nav-item">
+                                @*@RenderSection("Arama", false)*@
+                                @{
+                                    Html.RenderPartial("Arama");
+                                }
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style=" margin-left: -6px;  ">
+
+  
+        <div class="col-md-5" style="width: 2000px; height: 400px; background-image:url('../../Content/Classic/img/mesh-1430108_1280.png');">
+            <div class="col-md-5" style="margin-top:45px;">
+                @{
+                    Html.RenderAction("GirisYap", "Yazar");
+                }
+            </div>
+            <div class="col-md-5" style="margin-top:5px;margin-left:-200px">
+                @{
+                    Html.RenderAction("KategoriWidget", "Kategori");
+                }
+
+                @{
+                    Html.RenderAction("EtiketlerWidget", "Etiket");
+                }
+            </div>
+        </div>
+        @*<img src="~/Content/Classic/img/blog.jpg" alt="Image" class="hidden-lg-up img-fluid">*@
+        @*<img src="~/Content/Classic/img/background-1445021_1280.png" style="width:1400px;height:500px;">*@
+    </div>
+
+    <section class="tm-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    @{
+                        Html.RenderAction("PopulerMakaleler", "Homee");
+                    }
+                </div>
+            
+                <div class="col-lg-12">
+
+                    <p style="border-bottom:double"></p>
+                    <br />   <br />
+
+                    @RenderBody()
+                </div>
+
+            </div>
+                </div>
+    </section>
+
+    <footer class="tm-footer">
+        <div class="container-fluid">
+
+
+            <div class="row">
+                <div class="col-xs-12 tm-copyright-col">
+                    <p class="tm-copyright-text">Copyright 2016 Your Company Name</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- load JS files -->
+    <script src="/Content/Classic/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https:/jquery.com/download/) -->
+    <script src="/Content/Classic/https:/www.atlasestateagents.co.uk/javascript/tether.min.js"></script> <!-- Tether for Bootstrap, http:/stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h -->
+    <script src="/Content/Classic/js/bootstrap.min.js"></script>                 <!-- Bootstrap (http:/v4-alpha.getbootstrap.com/) -->
+
+</body>
+@RenderSection("scripts", false)
+</html>

@@ -1,0 +1,75 @@
+﻿
+    <html style="background-color:lightgray">
+    <head>
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="~/Content/Classic/css/KayıtOl.css" rel="stylesheet" />
+    </head>
+    <body style="background-color:lightgray">
+        <div class="container register">
+            <div class="row">
+                <div class="col-md-3 register-left">
+                    <img src="https://img.icons8.com/pastel-glyph/64/000000/pen.png">
+                    <h3>Yazar Kayıt Ol</h3>
+                    @*<p>Fikirlerini Bizimle Paylaş!</p>*@
+                    <input type="submit" name="" value="Giriş Yap" /><br />
+                </div>
+                <div class="col-lg-9 register-right" style="height:630px;">
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h3 class="register-heading">Kayıt Ol</h3>
+                            <div class="row register-form" >
+                                <form action="/Yazar/YazarEkle" method="post" role="form" enctype="multipart/form-data">
+                                    <div class="col-lg-6">
+                                        <div style="width:400px">
+                                            <input type="text" class="form-control" placeholder="Ad *" name="Adi" />
+                                        </div>     <br />
+                                        <div style="width:400px">
+                                            <input type="text" class="form-control" placeholder="Soyad *" name="Soyadi" />
+                                        </div>     <br />
+                                        <div style="width:400px">
+                                            <input type="password" class="form-control" placeholder="Şifre *" name="Sifre" />
+                                        </div>     <br />
+                                        <div style="width:400px">
+                                            <input type="text" class="form-control" placeholder="Hakkında *" name="Aciklama" />
+                                        </div>     <br />
+                                        <div class="col-md-12">
+                                            <label>Resim Ekle</label>
+                                            <input type="file" name="FileUpload">
+                                            <a href="/Admin/AddProductImage/"></a>
+
+
+                                        </div> <br />
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <div style="width:400px">
+                                            <input type="email" class="form-control" placeholder="Email *" name="Email" />
+                                        </div>     <br />
+                                        <div style="width:400px">
+                                            <input type="text" class="form-control" placeholder="Gizli Soru *" name="GizliSoru" />
+                                        </div>     <br />
+
+                                        <div style="width:400px">
+                                            <input type="text" class="form-control" placeholder="Gizli Cevap *" name="GizliCevap" />
+                                        </div>     <br />
+                                        <input type="submit" class="btnRegister" value="Kayıt Ol" />
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+                       
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+    </html>

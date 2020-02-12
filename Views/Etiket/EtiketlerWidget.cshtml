@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Blogg.Models.Etiket>
+
+
+<div class="single-widget tags-widget">
+    <h4 class="title" style="color:#D96277">Etiketler</h4>
+    @foreach (Blogg.Models.Etiket item in Model)
+    {
+
+        <ul>
+            <li><a style="color:#505AFC" href="/Etiket/Index/@item.EID">@item.Adi (@item.Makales.Count)</a></li>
+
+        </ul>
+
+    }
+</div>
+

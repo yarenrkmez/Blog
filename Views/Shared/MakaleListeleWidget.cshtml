@@ -1,0 +1,47 @@
+﻿
+
+@model IEnumerable<Blogg.Models.Makale>
+
+
+@helper IcerikKisalt(string metin)
+{
+    if (metin.Length > 200)
+    {
+        <span>@metin.Substring(0, 200)</span>
+    }
+    else
+    {
+        @metin
+    }
+}
+
+
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
+    <div class="tm-blog-post">
+        @foreach (Blogg.Models.Makale item in Model)
+        {
+
+            <span class="">@item.EklenmeTarihi.ToShortDateString() /</span>
+            <span>
+                <a>@item.Yorums.Count</a><img src="https://img.icons8.com/ios/24/000000/quote.png">
+
+
+
+            </span>
+            <p href="/Makale/Detay/@item.MakaleID">
+                @item.Baslik
+                        <a class="btn btn-success rounded" href="/Makale/Detay/@item.MakaleID">Hepsini Oku</a>
+      </p> 
+            <img src="@item.Resim.OrtaBoyut" alt="Image" class="img-fluid tm-img-post">
+
+            <p>@IcerikKisalt(item.İcerik)</p>
+
+
+        }
+        
+    </div>
+
+
+</div>
+
+

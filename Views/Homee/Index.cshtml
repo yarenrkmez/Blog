@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+
+
+}
+
+
+<h2>@ViewBag.mesaj</h2>
+@*@section Kategoriler{
+        @{ Html.RenderAction("KategoriWidget", "Kategori");}
+
+
+    }
+
+    @section Etiketler{
+        @{ Html.RenderAction("EtiketlerWidget", "Etiket");}
+
+
+    }
+    @section Arama{
+    }
+    @section PopulerMakaleler{
+        @{ Html.RenderAction("PopulerMakaleler", "Homee");}
+
+    }*@
+
+@{
+    Html.RenderAction("MakaleListele", "Homee");
+    }
+

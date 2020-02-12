@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = Model.Baslik;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section head{
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="style/images/favicon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="style/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style/css/plugins.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="style/css/color/red.css" rel="stylesheet">
+    <link href="style/type/bebas.css" rel="stylesheet">
+    <link href="style/type/fontello.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+          <script src="style/js/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+          <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 150px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+        }
+
+            .fa:hover {
+                opacity: 0.7;
+            }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        .fa-instagram {
+            background: #871288;
+            color: white;
+        }
+    </style>
+
+}
+
+@model Blogg.Models.Makale
+
+<div class="blog-posts classic-blog single">
+    <div class="post format-image">
+        <div class="meta">
+            <span class="date">@Model.EklenmeTarihi</span><span class="categories" />
+            <a href="/Kategori/Index/@Model.KategoriID">@Model.Kategori.Adi</a>,
+            <span class="comments">
+                <a href="#Yorum">
+                    @Model.Yorums.Count <i class="icon-chat-1"></i>
+                </a>
+            </span>
+        </div>
+        <h1 class="post-title">@Model.Baslik</h1>
+        <figure class="main">
+            <img src="@Model.Resim.BuyukBoyut" alt="" />
+        </figure>
+        <div class="post-content">
+            <p>@Model.İcerik</p>
+            <div class="meta tags">
+                @foreach (Blogg.Models.Etiket item in Model.Etikets)
+                {
+                    <a href="/Etiket/Index/@item.EID">@item.Adi</a>
+
+                }
+
+            </div>
+
+        </div>
+        <!-- /.post -->
+    </div>
+</div>
+<!-- /.blog-posts -->
+
+<div class="about-author dark-wrapper">
+    <div class="author-image"> <img alt="" src="@Model.Yazar.Resim.OrtaBoyut" /> </div>
+    <div class="author-details">
+        <h3>@Model.Yazar.Adi @Model.Yazar.Soyadi Hakkında</h3>
+        <p>@Model.Yazar.Aciklama</p>
+        <ul class="social">
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<a id="Yorum"></a>
+<div class="row">
+    <div id="comments">
+        <h3>@Model.Yorums.Count Yorum</h3>
+        <br />
+        <ol id="singlecomments" class="commentlist">
+            @foreach (Blogg.Models.Yorum item in Model.Yorums)
+            {
+                <li>
+                    <div class="comment-wrapper">
+                        <div class="user"><img src="https://img.icons8.com/material/24/000000/user-male-circle--v1.png"></div>
+                        <div class="message">
+                            <div class="arrow-box">
+                                <div class="info">
+                                    <h2><a href="#">@item.AdSoyad</a></h2>
+                                    <div class="meta"> <span class="date">@item.EklenmeTarihi.Value.ToShortDateString()</span>  </div>
+                                </div>
+                                <p>@item.Yorum1</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+
+
+        </ol>
+    </div>
+    <p style="border-bottom:double"></p>
+    <!-- /#comments -->
+
+    <div class="comment-form-wrapper" style="margin-left:400px">
+        <h3>Düşüncelerini Paylaşmak İster Misin?</h3>
+        <p>E-mail Adresiniz Yayınlanmayacaktır ,Zorunlu Alanlar*</p>
+        <form class="comment-form" name="form_name" action="/Makale/YorumYaz/@Model.MakaleID" method="post">
+            <div class="name-field">
+                <label><i class="icon-user"></i></label>
+                <input type="text" name="isim" placeholder="İsim Soyisim*" />
+            </div>
+            <div class="email-field">
+                <label><i class="icon-mail-alt"></i></label>
+                <input type="text" name="email" placeholder="Email*" />
+            </div>
+            <div class="website-field">
+                <label><i class="icon-globe"></i></label>
+                <input type="text" name="website" placeholder="Website" />
+            </div>
+            <div class="message-field">
+                <textarea name="yorum" id="textarea" rows="5" cols="30" placeholder="Yorum.."></textarea>
+            </div>
+            <input type="submit" value="Submit" name="submit" class="btn btn-submit" />
+        </form>
+    </div>
+</div>
+
+<p style="border-bottom:double"></p>

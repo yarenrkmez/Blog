@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Kategori";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    Html.RenderAction("MakaleListele", new 
+    {
+        id = Model
+    });
+}
